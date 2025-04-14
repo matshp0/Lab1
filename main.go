@@ -1,18 +1,26 @@
 package main
 
 import (
-	"fmt"
+	"encoding/json"
 	"net/http"
+	"time"
 )
 
+func timeHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	response := struct {
+		Time string `json:"time"`
+	}{
+		Time: time.Now().UTC().Format(time.RFC3339),
+	}
+
+	json.NewEncoder(w).Encode(response)
+}
+
 func main() {
-	http.HandleFunc("/time", func(w http.ResponseWriter, r *http.Request) {
-	})
+	http.HandleFunc("/time", timeHandler)
 
 	port := ":8795"
-	fmt.Printf("Server running on http://localhost%s/time\n", port)
-	err := http.ListenAndServe(port, nil)
-	if err != nil {
-		fmt.Printf("Server failed: %v\n", err)
-	}
+	http.ListenAndServe(port, nil)
 }
