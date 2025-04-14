@@ -22,5 +22,5 @@ func main() {
 	http.HandleFunc("/time", timeHandler)
 
 	port := ":8795"
-	http.ListenAndServe(port, nil)
+	http.ListenAndServe(port, nil) // listens to port
 }
