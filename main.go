@@ -21,6 +21,6 @@ func timeHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/time", timeHandler)
 
-	port := ":8795"
+	port := ":8795" //port
 	http.ListenAndServe(port, nil) // listens to port
 }
