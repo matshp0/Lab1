@@ -7,7 +7,7 @@ import (
 ) // imports
 
 func timeHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json") //set header
 
 	response := struct {
 		Time string `json:"time"`
