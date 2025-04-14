@@ -15,7 +15,7 @@ func timeHandler(w http.ResponseWriter, r *http.Request) {
 		Time: time.Now().UTC().Format(time.RFC3339),
 	}
 
-	json.NewEncoder(w).Encode(response)
+	json.NewEncoder(w).Encode(response) // returns json
 }
 
 func main() {
